@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velvet Café ☕</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{margin:0;font-family:sans-serif}
+.video-bg{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+.fallback{position:fixed;top:0;left:0;width:100%;height:100%;
+background:url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0') center/cover;z-index:-3;}
+.glass{background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);color:black;}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.5);display:none;z-index:40;}
+body{
+font-family:'Poppins', sans-serif;
+}
+
+.titulo-elegante{
+font-family:'Great Vibes', cursive;
+color:#3b4fa1;
+}
+
+.fondo-azul{
+background:#6f86b6;
+color:white;
+border-radius:15px;
+padding:15px;
+}
+
+.precio{
+color:#2b4bb3;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body class="text-black">
+
+<button id="installBtn" class="fixed bottom-20 left-4 bg-pink-400 px-3 py-2 rounded-full z-50">📲</button>
+
+<div class="fallback"></div>
+
+<video autoplay muted loop playsinline class="video-bg">
+<source src="https://cdn.coverr.co/videos/coverr-making-coffee-5176/1080p.mp4">
+</video>
+
+<!-- HOME -->
+<div id="home" class="h-screen flex flex-col justify-center items-center glass">
+<h1 class="text-5xl font-bold mb-4">☕ Velvet Café</h1>
+<p class="text-lg">Momentos dulces, sabores inolvidables ✨</p>
+<button onclick="enterMenu()" class="bg-pink-400 px-6 py-3 rounded text-white mt-4">Ver menú</button>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="hidden">
+
+<div class="glass p-6 text-center">
+<h1 class="titulo-elegante text-4xl">Velvet Café</h1>
+<p class="text-gray-700 mt-1">Menú digital</p>
+</div>
+
+<!-- CATEGORÍAS -->
+<div class="flex gap-2 p-3 overflow-x-auto glass">
+<button onclick="renderProducts('all')" class="bg-pink-400 px-3 py-1 rounded-full text-white">Todo</button>
+<button onclick="renderProducts('crepas')" class="bg-gray-200 px-3 py-1 rounded-full">🥞</button>
+<button onclick="renderProducts('bebidas')" class="bg-gray-200 px-3 py-1 rounded-full">☕</button>
+<button onclick="renderProducts('postres')" class="bg-gray-200 px-3 py-1 rounded-full">🍰</button>
+<button onclick="renderProducts('extras')" class="bg-gray-200 px-3 py-1 rounded-full">🍓</button>
+</div>
+  
+<h2 class="titulo-elegante text-3xl text-center mt-4">Bebidas</h2>
+<div id="products" class="p-4 grid gap-4"></div>
+
+<!-- CARRITO -->
+<div class="fixed bottom-5 right-5 z-50">
+<button onclick="openCart()" class="bg-pink-400 p-4 rounded-full text-white">
+🛒 <span id="count">0</span>
+</button>
+</div>
+
+<div id="overlay" class="overlay" onclick="closeCart()"></div>
+
+<div id="cartPanel" class="fixed bottom-0 left-0 right-0 bg-white p-4 hidden z-50 text-black">
+<div class="flex justify-between">
+<h2>Tu pedido</h2>
+<button onclick="closeCart()">✖</button>
+</div>
+
+<div id="cartItems"></div>
+<p id="total"></p>
+
+<button onclick="getLocation()" class="bg-blue-400 w-full mt-2 text-white">Ubicación 📍</button>
+
+<input id="direccion" placeholder="Dirección" class="w-full border mt-2">
+<input id="cambio" placeholder="¿Con cuánto pagarás?" class="w-full border mt-2">
+
+<select id="metodoPago" class="w-full border mt-2">
+<option>Efectivo</option>
+<option>Transferencia</option>
+</select>
+
+<button onclick="sendWhatsApp()" class="bg-green-400 w-full mt-2 text-white">Enviar pedido</button>
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+<div class="bg-white p-4 rounded w-11/12 text-black">
+<h2 id="modalName"></h2>
+<p id="modalDesc"></p>
+<div id="extras"></div>
+
+<button onclick="confirmAdd()" class="bg-pink-400 w-full mt-2 text-white">Agregar</button>
+<button onclick="closeModal()" class="text-red-400 mt-2">Cerrar</button>
+</div>
+</div>
+<!-- ADMIN -->
+<button onclick="showAdmin()" class="fixed top-5 right-5 bg-pink-400 px-3 py-1 rounded text-white">⚙️</button>
+
+<div id="admin" class="hidden fixed inset-0 bg-white p-4 overflow-y-auto text-black">
+<h2 class="text-xl font-bold">Panel Admin</h2>
+
+<input id="pass" type="password" placeholder="Contraseña" class="border mt-2 p-2 w-full">
+<button onclick="login()" class="bg-pink-400 text-white w-full mt-2 p-2">Entrar</button>
+
+<div id="panel" class="hidden mt-4">
+
+<input id="nombre" placeholder="Nombre" class="border p-2 w-full mt-2">
+<input id="precio" placeholder="Precio" class="border p-2 w-full mt-2">
+<input id="desc" placeholder="Descripción" class="border p-2 w-full mt-2">
+<input id="imagen" placeholder="URL de imagen" class="border p-2 w-full mt-2">
+
+<select id="categoria" class="border p-2 w-full mt-2">
+<option value="crepas">🥞 Crepas</option>
+<option value="bebidas">☕ Bebidas</option>
+<option value="postres">🍰 Postres</option>
+</select>
+
+<!-- EXTRAS -->
+<input id="extraNombre" placeholder="Extra" class="border p-2 w-full mt-2">
+<input id="extraPrecio" placeholder="Precio extra" class="border p-2 w-full mt-2">
+<button onclick="addExtra()" class="bg-gray-300 w-full mt-2 p-2">Agregar extra</button>
+<div id="listaExtras"></div>
+
+<button onclick="addProduct()" class="bg-green-400 w-full mt-2 p-2 text-white">Agregar producto</button>
+<button onclick="closeAdmin()" class="bg-red-400 w-full mt-2 p-2 text-white">Salir</button>
+
+<div id="adminList" class="mt-4"></div>
+</div>
+</div> 
+  
+<script>
+
+let products=[
+
+{cat:"crepas",name:"🍓 Crepa Amor Fresa",price:85,
+desc:"Crepa suave con fresas frescas y crema dulce… puro romance 💕",
+img:"https://images.pexels.com/photos/6732239/pexels-photo-6732239.jpeg?_gl=1*3a3uqb*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTA5MjUkajM1JGwwJGgw",
+extras:[{name:"Lechera",price:10},{name:"Nutella",price:15}],active:true},
+
+{cat:"crepas",name:"🍫 Crepa Tentación Nutella",price:95,
+desc:"Explosión cremosa de Nutella con plátano caramelizado 🤤",
+img:"https://images.pexels.com/photos/13689182/pexels-photo-13689182.jpeg?_gl=1*a39ea8*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTEwNjEkajM5JGwwJGgw",
+extras:[{name:"Fresas",price:15}],active:true},
+
+{cat:"bebidas",name:"☕ Capuccino Velvet",price:60,
+desc:"Espuma cremosa con café intenso y toque de vainilla ✨",
+img:"https://images.pexels.com/photos/29359730/pexels-photo-29359730.jpeg?_gl=1*114wedp*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTExMjEkajQ3JGwwJGgw",
+extras:[{name:"Shot extra",price:15}],active:true},
+
+{cat:"bebidas",name:"🧋 Frappé Caramelo Crush",price:75,
+desc:"Frappé helado con caramelo dulce irresistible 🧊",
+img:"https://images.pexels.com/photos/5724708/pexels-photo-5724708.jpeg?_gl=1*1hgluz7*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTExODkkajQ2JGwwJGgw",
+extras:[{name:"Crema batida",price:10}],active:true},
+
+{cat:"postres",name:"🧇 Waffle Dulce Tentación",price:90,
+desc:"Waffle dorado con miel, frutas y azúcar glass 😍",
+img:"https://images.pexels.com/photos/20807716/pexels-photo-20807716.jpeg?_gl=1*7lmyuf*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTEyNTgkajM3JGwwJGgw",
+extras:[{name:"Chocolate",price:15}],active:true},
+
+{cat:"postres",name:"🥞 Mini Hotcakes Love",price:70,
+desc:"Mini hotcakes esponjosos con fresas, chocolate y helado 🧈",
+img:"https://images.pexels.com/photos/15424183/pexels-photo-15424183.jpeg?_gl=1*1u84sfh*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTEzMzgkajMxJGwwJGgw",
+extras:[{name:"Fresas",price:10}],active:true}
+
+];
+
+let cart=[];
+let selectedProduct=null;
+let ubicacion="";
+let extrasTemp = [];
+// EXTRAS PANEL
+function addExtra(){
+
+let nombre = document.getElementById("extraNombre").value.trim();
+let precio = parseFloat(document.getElementById("extraPrecio").value);
+
+if(!nombre || isNaN(precio)){
+alert("Completa bien el extra");
+return;
+}
+
+extrasTemp.push({
+name:nombre,
+price:precio
+});
+
+document.getElementById("extraNombre").value="";
+document.getElementById("extraPrecio").value="";
+
+renderExtras();
+}
+
+function renderExtras(){
+let html="";
+
+extrasTemp.forEach((e,i)=>{
+html+=`
+<div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+<span>${e.name} +$${e.price}</span>
+<button onclick="deleteExtra(${i})">❌</button>
+</div>
+`;
+});
+
+document.getElementById("listaExtras").innerHTML = html;
+}
+
+function deleteExtra(i){
+extrasTemp.splice(i,1);
+renderExtras();
+}
+// MENU
+function enterMenu(){
+home.style.display="none";
+menu.classList.remove("hidden");
+renderProducts();
+}
+
+// RENDER
+function renderProducts(cat="all"){
+let html="";
+products.forEach((p,i)=>{
+if((cat==="all"||p.cat===cat)&&p.active){
+html+=`
+<div class="glass p-4 rounded-xl shadow-lg border border-gray-200">
+<img src="${p.img}" class="w-full h-32 object-cover rounded">
+<h3 class="font-bold">${p.name}</h3>
+<p>${p.desc}</p>
+<p class="precio text-lg">$${p.price}</p>
+
+<button onclick="openModal(${i})"
+class="bg-pink-400 w-10 h-10 flex items-center justify-center rounded text-white text-xl mt-2">+</button>
+
+</div>`;
+}
+});
+document.getElementById("products").innerHTML = html;
+}
+
+// MODAL
+function openModal(i){
+selectedProduct=products[i];
+modal.classList.remove("hidden");
+modalName.innerText=selectedProduct.name;
+modalDesc.innerText=selectedProduct.desc;
+
+let html="";
+selectedProduct.extras.forEach(e=>{
+html+=`<label><input type="checkbox" data-price="${e.price}"> ${e.name} +$${e.price}</label><br>`;
+});
+extras.innerHTML=html;
+}
+
+function closeModal(){modal.classList.add("hidden");}
+
+// AGREGAR
+function confirmAdd(){
+let total=selectedProduct.price;
+document.querySelectorAll("#extras input").forEach(e=>{
+if(e.checked) total+=parseInt(e.dataset.price);
+});
+cart.push({name:selectedProduct.name,price:total});
+updateCart();
+closeModal();
+}
+
+// CARRITO
+function updateCart(){
+let html="",total=0;
+cart.forEach((p,i)=>{
+html+=`${p.name} $${p.price} <button onclick="removeItem(${i})">❌</button><br>`;
+total+=p.price;
+});
+cartItems.innerHTML=html;
+document.getElementById("total").innerText="Total: $"+total;
+document.getElementById("count").innerText=cart.length;
+}
+
+function removeItem(i){cart.splice(i,1);updateCart();}
+function openCart(){cartPanel.classList.remove("hidden");overlay.style.display="block";}
+function closeCart(){cartPanel.classList.add("hidden");overlay.style.display="none";}
+
+// GEO
+function getLocation(){
+navigator.geolocation.getCurrentPosition(pos=>{
+ubicacion=`https://maps.google.com?q=${pos.coords.latitude},${pos.coords.longitude}`;
+});
+}
+
+// WHATS
+function sendWhatsApp(){
+let msg="Pedido:%0A";
+let total=0;
+
+cart.forEach(p=>{
+msg+=`${p.name} $${p.price}%0A`;
+total+=p.price;
+});
+
+let pago=parseFloat(document.getElementById("cambio").value)||0;
+let cambioFinal=pago-total;
+
+msg+=`Total: $${total}%0A`;
+msg+=`Pagará con: $${pago}%0A`;
+msg+=`Cambio: $${cambioFinal}%0A`;
+msg+=`Método: ${metodoPago.value}%0A`;
+msg+=`Ubicación: ${ubicacion}%0A`;
+msg+=`Dirección: ${direccion.value}`;
+
+window.open("https://wa.me/5215550572742?text="+msg);
+}
+
+// INSTALL
+installBtn.onclick=()=>{
+alert("📲 Agrégame a tu pantalla de inicio\nCompartir → Agregar a pantalla de inicio");
+};
+function showAdmin(){admin.classList.remove("hidden");}
+function closeAdmin(){admin.classList.add("hidden");}
+
+function login(){
+if(pass.value==="1234"){
+panel.classList.remove("hidden");
+renderAdmin();
+}
+}
+
+function renderAdmin(){
+let html="";
+products.forEach((p,i)=>{
+html+=`
+<div style="margin-bottom:10px;border-bottom:1px solid gray;padding:5px;">
+<strong>${p.name}</strong>
+
+<div style="margin-top:5px;display:flex;gap:5px;">
+<button onclick="deleteP(${i})">❌</button>
+
+<button onclick="toggleP(${i})"
+style="background:${p.active?'green':'gray'};color:white;padding:3px 8px;border-radius:20px;">
+${p.active?'ON':'OFF'}
+</button>
+
+<button onclick="editP(${i})"
+style="background:orange;color:white;padding:3px 8px;border-radius:5px;">
+✏️
+</button>
+</div>
+</div>`;
+});
+adminList.innerHTML=html;
+}
+
+function deleteP(i){products.splice(i,1);renderAdmin();renderProducts();}
+function toggleP(i){products[i].active=!products[i].active;renderAdmin();renderProducts();}
+
+function editP(i){
+nombre.value=products[i].name;
+precio.value=products[i].price;
+desc.value=products[i].desc;
+imagen.value = products[i].img;
+extrasTemp=products[i].extras||[];
+renderExtras();
+}
+
+function addProduct(){
+products.push({
+cat:document.getElementById("categoria").value,
+name:nombre.value,
+price:parseInt(precio.value),
+desc:desc.value,
+img: document.getElementById("imagen").value || "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0",
+extras:extrasTemp,
+active:true
+});
+
+extrasTemp=[];
+renderExtras();
+renderProducts();
+renderAdmin();
+}
+</script>
+
+</body>
+</html>
