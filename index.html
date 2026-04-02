@@ -93,7 +93,7 @@ font-weight:bold;
   
 <h2 class="titulo-elegante text-3xl text-center mt-4">Tiburón</h2>
 <div class="max-w-md mx-auto">
-  <div id="products" class="p-4 grid gap-4"></div>
+<div id="products" class="p-4 flex flex-col gap-4"></div>
 </div>
 
 <!-- CARRITO -->
@@ -1657,14 +1657,12 @@ products.forEach((p,i)=>{
 if((cat==="all"||p.cat===cat)&&p.active){
 
 html+=`
-<div class="glass p-4 rounded-xl shadow-lg border border-gray-200 flex flex-col h-56">
+<div class="glass p-4 rounded-xl shadow-lg border border-gray-200 flex flex-col">
 
-<div class="w-full h-28 rounded overflow-hidden mb-2 bg-gray-100">
-  ${p.img && p.img !== "" 
-    ? `<img src="${p.img}" class="w-full h-full object-cover">`
-    : `<div class="w-full h-full"></div>`
-  }
-</div>
+${p.img && p.img !== "" 
+  ? `<img src="${p.img}" class="w-full h-28 object-cover rounded mb-2">`
+  : ``
+}
 
   <h3 class="font-bold text-sm line-clamp-2">${p.name}</h3>
 
