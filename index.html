@@ -1659,11 +1659,12 @@ if((cat==="all"||p.cat===cat)&&p.active){
 html+=`
 <div class="glass p-4 rounded-xl shadow-lg border border-gray-200 flex flex-col h-56">
 
-  ${p.img && p.img !== "" ? `
-  <div class="w-full h-28 rounded overflow-hidden mb-2">
-    <img src="${p.img}" class="w-full h-full object-cover">
-  </div>
-` : ``}
+<div class="w-full h-28 rounded overflow-hidden mb-2 bg-gray-100">
+  ${p.img && p.img !== "" 
+    ? `<img src="${p.img}" class="w-full h-full object-cover">`
+    : `<div class="w-full h-full"></div>`
+  }
+</div>
 
   <h3 class="font-bold text-sm line-clamp-2">${p.name}</h3>
 
