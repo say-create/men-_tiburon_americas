@@ -68,7 +68,7 @@ font-weight:bold;
 <div class="flex gap-2 p-3 overflow-x-auto glass">
 <button onclick="renderProducts('all')" class="bg-blue-500 px-3 py-1 rounded-full text-white">Todo</button>
 <button onclick="renderProducts('paquetes')" class="bg-gray-200 px-3 py-1 rounded-full">Paquetes</button>
-<button onclick="renderProducts('algo diferente')" class="bg-gray-200 px-3 py-1 rounded-full">Algo diferente</button>
+<button onclick="renderProducts('algo-diferente')" class="bg-gray-200 px-3 py-1 rounded-full">Algo diferente</button>
 <button onclick="renderProducts('bebidas')" class="bg-gray-200 px-3 py-1 rounded-full">Bebidas</button>
 <button onclick="renderProducts('platillos')" class="bg-gray-200 px-3 py-1 rounded-full">Platillos</button>
 <button onclick="renderProducts('infantil')" class="bg-gray-200 px-3 py-1 rounded-full">Menu infantil</button>
@@ -138,9 +138,12 @@ font-weight:bold;
 <input id="imagen" placeholder="URL de imagen" class="border p-2 w-full mt-2">
 
 <select id="categoria" class="border p-2 w-full mt-2">
-<option value="crepas">🥞 Crepas</option>
-<option value="bebidas">☕ Bebidas</option>
-<option value="postres">🍰 Postres</option>
+<option value="crepas">Paquetes</option>
+<option value="bebidas">Algo diferente</option>
+<option value="postres">Bebidas</option>
+<option value="crepas">Platillos</option>
+<option value="bebidas">Menu infantil</option>
+<option value="postres">Bebidas</option>
 </select>
 
 <!-- EXTRAS -->
@@ -210,13 +213,13 @@ img:"https://images.unsplash.com/photo-1604908812176-7f5c8cdebc51",
 extras:[],
 active:true
 },
-{
+
 // =====================
 // 🟢 ALGO DIFERENTE
 // =====================
 
 {
-cat:"algo diferente",
+cat:"algo-diferente",
 name:"Tacos de arrachera (2 pzas)",
 price:135,
 desc:"",
@@ -225,7 +228,7 @@ extras:[],
 active:true
 },
 {
-cat:"algo diferente",
+cat:"algo-diferente",
 name:"Spaguetti al pollo",
 price:125,
 desc:"",
@@ -234,7 +237,7 @@ extras:[],
 active:true
 },
 {
-cat:"algo diferente",
+cat:"algo-diferente",
 name:"Pechuga al gusto",
 price:185,
 desc:"Elige preparación",
@@ -248,7 +251,7 @@ extras:[
 active:true
 },
 {
-cat:"algo diferente",
+cat:"algo-diferente",
 name:"Arrachera",
 price:215,
 desc:"250 gramos",
