@@ -4,7 +4,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Velvet Café ☕</title>
+<title> TIBURON LAS AMERICAS </title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -72,6 +72,7 @@ font-weight:bold;
 <button onclick="renderProducts('bebidas')" class="bg-gray-200 px-3 py-1 rounded-full">🥤</button>
 <button onclick="renderProducts('extras')" class="bg-gray-200 px-3 py-1 rounded-full">🍴</button>
 <button onclick="renderProducts('infantil')" class="bg-gray-200 px-3 py-1 rounded-full">👶</button>
+</div> 
   
 <h2 class="titulo-elegante text-3xl text-center mt-4">Bebidas</h2>
 <div id="products" class="p-4 grid gap-4"></div>
@@ -159,7 +160,323 @@ font-weight:bold;
 
 let products=[
 
-products=[
+// =====================
+// 🟢 NUESTROS PAQUETES
+// =====================
+
+{
+cat:"paquetes",
+name:"Pá que lo pruebes",
+price:209,
+desc:"Caldo de camarón + 2 quesadillas + refresco",
+img:"https://images.unsplash.com/photo-1559847844-5315695dadae",
+extras:[],
+active:true
+},
+{
+cat:"paquetes",
+name:"Fresco y delicioso",
+price:279,
+desc:"Tostada de ceviche + vuelve a la vida + refresco",
+img:"https://images.unsplash.com/photo-1604908812176-7f5c8cdebc51",
+extras:[],
+active:true
+},
+{
+cat:"paquetes",
+name:"Levanta Muertos Tiburón",
+price:259,
+desc:"Caldo + quesadilla + ostiones + refresco",
+img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
+extras:[],
+active:true
+},
+{
+cat:"paquetes",
+name:"Pa compartir (2 personas)",
+price:489,
+desc:"Parrillada + 2 caldos + 2 refrescos",
+img:"https://images.unsplash.com/photo-1559847844-5315695dadae",
+extras:[],
+active:true
+},
+
+// =====================
+// 🟢 ALGO DIFERENTE
+// =====================
+
+{
+cat:"extras",
+name:"Tacos de arrachera (2 pzas)",
+price:135,
+desc:"",
+img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+extras:[],
+active:true
+},
+{
+cat:"extras",
+name:"Spaguetti al pollo",
+price:125,
+desc:"",
+img:"https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5",
+extras:[],
+active:true
+},
+{
+cat:"extras",
+name:"Pechuga al gusto",
+price:185,
+desc:"Elige preparación",
+img:"https://images.unsplash.com/photo-1604908176997-43197f72c58b",
+extras:[
+{name:"Plancha",price:0},
+{name:"Cordón Blue",price:0},
+{name:"Empanizada",price:0},
+{name:"Napolitana",price:0}
+],
+active:true
+},
+
+// =====================
+// 🟢 MENÚ INFANTIL
+// =====================
+
+{
+cat:"infantil",
+name:"Mini filete",
+price:119,
+desc:"Incluye bebida y guarnición",
+img:"https://images.unsplash.com/photo-1604908177522-040e7b5d96c7",
+extras:[
+{name:"Jugo",price:0},
+{name:"Malteada",price:0},
+{name:"Arroz",price:0},
+{name:"Verduras",price:0},
+{name:"Papas",price:0}
+],
+active:true
+},
+
+// =====================
+// 🟢 BEBIDAS
+// =====================
+
+{
+cat:"bebidas",
+name:"Coca",
+price:33,
+desc:"",
+img:"https://images.unsplash.com/photo-1580910051074-3eb694886505",
+extras:[],
+active:true
+},
+{
+cat:"bebidas",
+name:"Sprite",
+price:33,
+desc:"",
+img:"https://images.unsplash.com/photo-1622484212850-eb596d769edc",
+extras:[],
+active:true
+},
+{
+cat:"bebidas",
+name:"Michelada",
+price:75,
+desc:"",
+img:"https://images.unsplash.com/photo-1603052875302-d376b7c0638a",
+extras:[],
+active:true
+},
+
+// =====================
+// 🟢 FRÍOS
+// =====================
+
+{
+cat:"mariscos",
+name:"Tostadas",
+price:65,
+desc:"Elige ingrediente",
+img:"https://images.unsplash.com/photo-1604908177522-040e7b5d96c7",
+extras:[
+{name:"Camarón",price:0},
+{name:"Pulpo",price:0},
+{name:"Pescado",price:0},
+{name:"Jaiba",price:0},
+{name:"Calamar",price:0}
+],
+active:true
+},
+{
+cat:"mariscos",
+name:"Ostiones en su concha",
+price:170,
+desc:"",
+img:"https://images.unsplash.com/photo-1553621042-f6e147245754",
+extras:[],
+active:true
+},
+
+// =====================
+// 🟢 CALIENTES
+// =====================
+
+{
+cat:"mariscos",
+name:"Quesadillas",
+price:30,
+desc:"Elige relleno",
+img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+extras:[
+{name:"Camarón",price:0},
+{name:"Pulpo",price:0},
+{name:"Pescado",price:0},
+{name:"Jaiba",price:0}
+],
+active:true
+},
+
+// =====================
+// 🟢 COCTELES (TAMAÑOS)
+// =====================
+
+{
+cat:"mariscos",
+name:"Cóctel de camarón",
+price:95,
+desc:"Selecciona tamaño",
+img:"https://images.unsplash.com/photo-1559847844-5315695dadae",
+extras:[
+{name:"Chico",price:0},
+{name:"Mediano",price:75},
+{name:"Grande",price:110}
+],
+active:true
+},
+{
+cat:"mariscos",
+name:"Cóctel de ostión",
+price:95,
+desc:"Selecciona tamaño",
+img:"https://images.unsplash.com/photo-1553621042-f6e147245754",
+extras:[
+{name:"Chico",price:0},
+{name:"Mediano",price:75},
+{name:"Grande",price:110}
+],
+active:true
+},
+
+// =====================
+// 🟢 CEVICHES
+// =====================
+
+{
+cat:"mariscos",
+name:"Ceviche de pulpo",
+price:105,
+desc:"Selecciona tamaño",
+img:"https://images.unsplash.com/photo-1604908176997-43197f72c58b",
+extras:[
+{name:"Chico",price:0},
+{name:"Mediano",price:80},
+{name:"Grande",price:110}
+],
+active:true
+},
+
+// =====================
+// 🟢 CAMARONES
+// =====================
+
+{
+cat:"mariscos",
+name:"Camarones tradicionales",
+price:299,
+desc:"Elige preparación",
+img:"https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56",
+extras:[
+{name:"Al ajillo",price:0},
+{name:"Al chipotle",price:0},
+{name:"A la diabla",price:0},
+{name:"A la veracruzana",price:0},
+{name:"Empanizados",price:0}
+],
+active:true
+},
+{
+cat:"mariscos",
+name:"Camarones coco",
+price:320,
+desc:"",
+img:"https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56",
+extras:[],
+active:true
+},
+
+// =====================
+// 🟢 ESPECIALIDADES
+// =====================
+
+{
+cat:"mariscos",
+name:"Vuelve a la vida",
+price:199,
+desc:"",
+img:"https://images.unsplash.com/photo-1604908812176-7f5c8cdebc51",
+extras:[],
+active:true
+},
+{
+cat:"mariscos",
+name:"Parrillada de mariscos",
+price:369,
+desc:"",
+img:"https://images.unsplash.com/photo-1559847844-5315695dadae",
+extras:[],
+active:true
+},
+
+// =====================
+// 🟢 FILETES
+// =====================
+
+{
+cat:"mariscos",
+name:"Filete al gusto",
+price:195,
+desc:"Elige preparación",
+img:"https://images.unsplash.com/photo-1544025162-d76694265947",
+extras:[
+{name:"Plancha",price:0},
+{name:"Mantequilla",price:0},
+{name:"Ajillo",price:0},
+{name:"Empanizado",price:0}
+],
+active:true
+},
+
+// =====================
+// 🟢 MOJARRA
+// =====================
+
+{
+cat:"mariscos",
+name:"Mojarra frita",
+price:215,
+desc:"Elige preparación",
+img:"https://images.unsplash.com/photo-1553621042-f6e147245754",
+extras:[
+{name:"Frita",price:0},
+{name:"Mantequilla",price:0},
+{name:"Ajillo",price:0}
+],
+active:true
+}
+
+];
 
 let cart=[];
 let selectedProduct=null;
