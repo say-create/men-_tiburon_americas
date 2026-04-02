@@ -1654,22 +1654,24 @@ function renderProducts(cat="all"){
 let html="";
 products.forEach((p,i)=>{
 if((cat==="all"||p.cat===cat)&&p.active){
-html+=`
-<div class="glass p-4 rounded-xl shadow-lg border border-gray-200">
-<div class="w-full h-32 rounded overflow-hidden bg-gray-200 flex items-center justify-center">
+html+=`<div class="glass p-4 rounded-xl shadow-lg border border-gray-200 flex flex-col h-56">
+<div class="w-full h-28 rounded overflow-hidden bg-gray-200 flex items-center justify-center mb-2">
   ${p.img 
     ? `<img src="${p.img}" class="w-full h-full object-cover">`
-    : `<span class="text-gray-400 text-sm">Sin imagen</span>`
+    : ``
   }
 </div>
-<h3 class="font-bold">${p.name}</h3>
-<p>${p.desc}</p>
-<p class="precio text-lg">$${p.price}</p>
 
-<button onclick="openModal(${i})"
-class="bg-blue-500 w-10 h-10 flex items-center justify-center rounded text-white text-xl mt-2">+</button>
+<h3 class="font-bold text-sm line-clamp-2">${p.name}</h3>
 
-</div>`;
+<p class="text-xs text-gray-600 line-clamp-2">${p.desc || ""}</p>
+
+<div class="mt-auto">
+  <p class="precio text-lg">$${p.price}</p>
+
+  <button onclick="openModal(${i})"
+  class="bg-blue-500 w-10 h-10 flex items-center justify-center rounded text-white text-xl mt-2">+</button>
+</div>
 }
 });
 document.getElementById("products").innerHTML = html;
