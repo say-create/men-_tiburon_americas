@@ -123,6 +123,9 @@ box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 <button onclick="getLocation()" class="bg-blue-400 w-full mt-2 text-white">Ubicación 📍</button>
 
 <input id="direccion" placeholder="Dirección" class="w-full border mt-2">
+<textarea id="especificaciones"
+placeholder="Especificaciones para los productos (ej: sin cebolla, sin picante, etc.)"
+class="w-full border mt-2 p-2 rounded"></textarea>
 <input id="cambio" placeholder="¿Con cuánto pagarás?" class="w-full border mt-2">
 
 <select id="metodoPago" class="w-full border mt-2">
@@ -1766,17 +1769,39 @@ msg+=`${p.name} $${p.price}%0A`;
 total+=p.price;
 });
 
-let pago=parseFloat(document.getElementById("cambio").value)||0;
-let cambioFinal=pago-total;
+let porcentaje = parseInt(document.getElementById("propina").value) || 0;
+let propina = Math.round(total * (porcentaje / 100));
+let totalFinal = total + propina;
 
-msg+=`Total: $${total}%0A`;
+let pago = parseFloat(document.getElementById("cambio").value) || 0;
+let cambioFinal = pago - totalFinal;
+
+msg+=`Subtotal: $${total}%0A`;
+msg+=`Propina (${porcentaje}%): $${propina}%0A`;
+msg+=`Total: $${totalFinal}%0A`;
 msg+=`Pagará con: $${pago}%0A`;
 msg+=`Cambio: $${cambioFinal}%0A`;
 msg+=`Método: ${metodoPago.value}%0A`;
-msg+=`Ubicación: ${ubicacion}%0A`;
-msg+=`Dirección: ${direccion.value}`;
+<select id="metodoPago" class="w-full border mt-2">
+<option>Efectivo</option>
+<option>Transferencia</option>
+<option>Tarjeta (llevar terminal)</option>
+</select>
 
-window.open("https://wa.me/5215550572742?text="+msg);
+<select id="propina" class="w-full border mt-2">
+<option value="0">Sin propina</option>
+<option value="5">Propina 5%</option>
+<option value="10">Propina 10%</option>
+<option value="15">Propina 15%</option>
+<option value="20">Propina 20%</option>
+<option value="25">Propina 25%</option>
+<option value="30">Propina 30%</option>
+</select>
+msg+=`Ubicación: ${ubicacion}%0A`;
+msg+=`Dirección: ${direccion.value}%0A`;
+msg+=`Notas: ${document.getElementById("nota").value}`;
+
+window.open("https://wa.me/5215520708691?text="+msg);
 }
 
 // INSTALL
