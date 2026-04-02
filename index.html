@@ -11,13 +11,14 @@
 <style>
 body{margin:0;font-family:sans-serif}
 .video-bg{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
-.fallback{position:fixed;top:0;left:0;width:100%;height:100%;
-background:url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0') center/cover;z-index:-3;}
-.glass{background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);color:black;}
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.5);display:none;z-index:40;}
-body{
-font-family:'Poppins', sans-serif;
+.fallback{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url('https://i.postimg.cc/v8PjHVZH/IMG-4954.jpg') center/cover no-repeat;
+z-index:-3;
 }
 
 .titulo-elegante{
@@ -44,10 +45,6 @@ font-weight:bold;
 <button id="installBtn" class="fixed bottom-20 left-4 bg-blue-500 px-3 py-2 rounded-full z-50">📲</button>
 
 <div class="fallback"></div>
-
-<video autoplay muted loop playsinline class="video-bg">
-<source src="https://cdn.coverr.co/videos/coverr-making-coffee-5176/1080p.mp4">
-</video>
 
 <!-- HOME -->
 <div id="home" class="h-screen flex flex-col justify-center items-center glass">
