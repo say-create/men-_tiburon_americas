@@ -39,6 +39,13 @@ padding:15px;
 color:#2b4bb3;
 font-weight:bold;
 }
+.glass{
+background: rgba(255,255,255,0.75);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: 20px;
+box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
 </style>
 </head>
 
@@ -49,7 +56,7 @@ font-weight:bold;
 <div class="fallback"></div>
 
 <!-- HOME -->
-<div id="home" class="h-screen flex flex-col justify-center items-center glass">
+<div id="home" class="h-screen flex flex-col justify-center items-center glass p-6 text-center max-w-md mx-auto">
 <h1 class="text-5xl font-bold mb-4">🐬Tiburon las americas🐬</h1>
 <p class="text-lg">LOS MEJORES MARISCOS</p>
 <button onclick="enterMenu()" class="bg-blue-500 px-6 py-3 rounded text-white mt-4">Ver menú</button>
@@ -1672,7 +1679,7 @@ products.forEach((p,i)=>{
 if((cat==="all"||p.cat===cat)&&p.active){
 
 html+=`
-<div class="glass p-4 rounded-xl shadow-lg border border-gray-200 flex flex-col">
+<div class="glass p-4 rounded-xl flex flex-col">
 
 ${p.img && p.img !== "" 
   ? `<img src="${p.img}" class="w-full h-28 object-cover rounded mb-2">`
