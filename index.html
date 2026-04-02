@@ -131,6 +131,17 @@ class="w-full border mt-2 p-2 rounded"></textarea>
 <select id="metodoPago" class="w-full border mt-2">
 <option>Efectivo</option>
 <option>Transferencia</option>
+<option>Tarjeta (llevar terminal)</option>
+</select>
+
+<select id="propina" class="w-full border mt-2">
+<option value="0">Sin propina</option>
+<option value="5">Propina 5%</option>
+<option value="10">Propina 10%</option>
+<option value="15">Propina 15%</option>
+<option value="20">Propina 20%</option>
+<option value="25">Propina 25%</option>
+<option value="30">Propina 30%</option>
 </select>
 
 <button onclick="sendWhatsApp()" class="bg-green-400 w-full mt-2 text-white">Enviar pedido</button>
@@ -1782,21 +1793,6 @@ msg+=`Total: $${totalFinal}%0A`;
 msg+=`Pagará con: $${pago}%0A`;
 msg+=`Cambio: $${cambioFinal}%0A`;
 msg+=`Método: ${metodoPago.value}%0A`;
-<select id="metodoPago" class="w-full border mt-2">
-<option>Efectivo</option>
-<option>Transferencia</option>
-<option>Tarjeta (llevar terminal)</option>
-</select>
-
-<select id="propina" class="w-full border mt-2">
-<option value="0">Sin propina</option>
-<option value="5">Propina 5%</option>
-<option value="10">Propina 10%</option>
-<option value="15">Propina 15%</option>
-<option value="20">Propina 20%</option>
-<option value="25">Propina 25%</option>
-<option value="30">Propina 30%</option>
-</select>
 msg+=`Ubicación: ${ubicacion}%0A`;
 msg+=`Dirección: ${direccion.value}%0A`;
 msg+=`Notas: ${document.getElementById("nota").value}`;
