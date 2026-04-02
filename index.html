@@ -59,13 +59,13 @@ font-weight:bold;
 <!-- MENU -->
 <div id="menu" class="hidden">
 
-<div class="glass p-6 text-center">
+<div class="glass p-6 text-center max-w-md mx-auto">
 <h1 class="titulo-elegante text-4xl">🐬Tiburon las americas🐬</h1>
 <p class="text-gray-700 mt-1">Menú digital</p>
 </div>
 
 <!-- CATEGORÍAS -->
-<div class="flex gap-2 p-3 overflow-x-auto glass">
+<div class="flex gap-2 p-3 overflow-x-auto glass max-w-md mx-auto">
 <button onclick="renderProducts('all')" class="bg-blue-500 px-3 py-1 rounded-full text-white">Todo</button>
 <button onclick="renderProducts('paquetes')" class="bg-gray-200 px-3 py-1 rounded-full">Paquetes</button>
 <button onclick="renderProducts('algo-diferente')" class="bg-gray-200 px-3 py-1 rounded-full">Algo diferente</button>
@@ -91,8 +91,8 @@ font-weight:bold;
 <button onclick="renderProducts('mojarra')" class="bg-gray-200 px-3 py-1 rounded-full">Mojarra</button>
 </div> 
   
-<h2 class="titulo-elegante text-3xl text-center mt-4">Bebidas</h2>
-<div id="products" class="p-4 grid gap-4"></div>
+<h2 class="titulo-elegante text-3xl text-center mt-4">Tiburón</h2>
+<div id="products" class="p-4 grid gap-4 max-w-md mx-auto"></div>
 
 <!-- CARRITO -->
 <div class="fixed bottom-5 right-5 z-50">
@@ -1654,7 +1654,7 @@ products.forEach((p,i)=>{
 if((cat==="all"||p.cat===cat)&&p.active){
 html+=`
 <div class="glass p-4 rounded-xl shadow-lg border border-gray-200">
-<img src="${p.img}" class="w-full h-32 object-cover rounded">
+${p.img ? `<img src="${p.img}" class="w-full h-32 object-cover rounded">` : ""}
 <h3 class="font-bold">${p.name}</h3>
 <p>${p.desc}</p>
 <p class="precio text-lg">$${p.price}</p>
