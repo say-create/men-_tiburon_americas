@@ -67,11 +67,11 @@ font-weight:bold;
 <!-- CATEGORÍAS -->
 <div class="flex gap-2 p-3 overflow-x-auto glass">
 <button onclick="renderProducts('all')" class="bg-pink-400 px-3 py-1 rounded-full text-white">Todo</button>
-<button onclick="renderProducts('crepas')" class="bg-gray-200 px-3 py-1 rounded-full">🥞</button>
-<button onclick="renderProducts('bebidas')" class="bg-gray-200 px-3 py-1 rounded-full">☕</button>
-<button onclick="renderProducts('postres')" class="bg-gray-200 px-3 py-1 rounded-full">🍰</button>
-<button onclick="renderProducts('extras')" class="bg-gray-200 px-3 py-1 rounded-full">🍓</button>
-</div>
+<button onclick="renderProducts('paquetes')" class="bg-gray-200 px-3 py-1 rounded-full">🍽️</button>
+<button onclick="renderProducts('mariscos')" class="bg-gray-200 px-3 py-1 rounded-full">🦐</button>
+<button onclick="renderProducts('bebidas')" class="bg-gray-200 px-3 py-1 rounded-full">🥤</button>
+<button onclick="renderProducts('extras')" class="bg-gray-200 px-3 py-1 rounded-full">🍴</button>
+<button onclick="renderProducts('infantil')" class="bg-gray-200 px-3 py-1 rounded-full">👶</button>
   
 <h2 class="titulo-elegante text-3xl text-center mt-4">Bebidas</h2>
 <div id="products" class="p-4 grid gap-4"></div>
@@ -159,37 +159,7 @@ font-weight:bold;
 
 let products=[
 
-{cat:"crepas",name:"🍓 Crepa Amor Fresa",price:85,
-desc:"Crepa suave con fresas frescas y crema dulce… puro romance 💕",
-img:"https://images.pexels.com/photos/6732239/pexels-photo-6732239.jpeg?_gl=1*3a3uqb*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTA5MjUkajM1JGwwJGgw",
-extras:[{name:"Lechera",price:10},{name:"Nutella",price:15}],active:true},
-
-{cat:"crepas",name:"🍫 Crepa Tentación Nutella",price:95,
-desc:"Explosión cremosa de Nutella con plátano caramelizado 🤤",
-img:"https://images.pexels.com/photos/13689182/pexels-photo-13689182.jpeg?_gl=1*a39ea8*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTEwNjEkajM5JGwwJGgw",
-extras:[{name:"Fresas",price:15}],active:true},
-
-{cat:"bebidas",name:"☕ Capuccino Velvet",price:60,
-desc:"Espuma cremosa con café intenso y toque de vainilla ✨",
-img:"https://images.pexels.com/photos/29359730/pexels-photo-29359730.jpeg?_gl=1*114wedp*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTExMjEkajQ3JGwwJGgw",
-extras:[{name:"Shot extra",price:15}],active:true},
-
-{cat:"bebidas",name:"🧋 Frappé Caramelo Crush",price:75,
-desc:"Frappé helado con caramelo dulce irresistible 🧊",
-img:"https://images.pexels.com/photos/5724708/pexels-photo-5724708.jpeg?_gl=1*1hgluz7*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTExODkkajQ2JGwwJGgw",
-extras:[{name:"Crema batida",price:10}],active:true},
-
-{cat:"postres",name:"🧇 Waffle Dulce Tentación",price:90,
-desc:"Waffle dorado con miel, frutas y azúcar glass 😍",
-img:"https://images.pexels.com/photos/20807716/pexels-photo-20807716.jpeg?_gl=1*7lmyuf*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTEyNTgkajM3JGwwJGgw",
-extras:[{name:"Chocolate",price:15}],active:true},
-
-{cat:"postres",name:"🥞 Mini Hotcakes Love",price:70,
-desc:"Mini hotcakes esponjosos con fresas, chocolate y helado 🧈",
-img:"https://images.pexels.com/photos/15424183/pexels-photo-15424183.jpeg?_gl=1*1u84sfh*_ga*MTQ2NTQ4NzI2NC4xNzc0OTEwOTAw*_ga_8JE65Q40S6*czE3NzQ5MTA5MDAkbzEkZzEkdDE3NzQ5MTEzMzgkajMxJGwwJGgw",
-extras:[{name:"Fresas",price:10}],active:true}
-
-];
+products=[
 
 let cart=[];
 let selectedProduct=null;
