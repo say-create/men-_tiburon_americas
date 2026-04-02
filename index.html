@@ -1656,7 +1656,12 @@ products.forEach((p,i)=>{
 if((cat==="all"||p.cat===cat)&&p.active){
 html+=`
 <div class="glass p-4 rounded-xl shadow-lg border border-gray-200">
-${p.img ? `<img src="${p.img}" class="w-full h-32 object-cover rounded">` : ""}
+<div class="w-full h-32 rounded overflow-hidden bg-gray-200 flex items-center justify-center">
+  ${p.img 
+    ? `<img src="${p.img}" class="w-full h-full object-cover">`
+    : `<span class="text-gray-400 text-sm">Sin imagen</span>`
+  }
+</div>
 <h3 class="font-bold">${p.name}</h3>
 <p>${p.desc}</p>
 <p class="precio text-lg">$${p.price}</p>
