@@ -226,15 +226,20 @@ let products=[
 cat:"paquetes",
 name:"Pá que lo pruebes",
 price:209,
-desc:"Caldo de camarón + 2 quesadillas + refresco",
-extras:[],
+desc:"Caldo de camarón + 2 quesadillas + refresco (Especificar el sabor de su refresco en las notas del pedido)",
+extras:[
+{name:"Quesadilla de Camarón",price:0},
+{name:"Quesadilla de Pulpo",price:0},
+{name:"Quesadilla de Pescado",price:0},
+{name:"Quesadilla de Jaiba",price:0}
+],
 active:true
 },
 {
 cat:"paquetes",
 name:"Fresco y delicioso",
 price:279,
-desc:"Tostada de ceviche + vuelve a la vida + refresco",
+desc:"Tostada de ceviche + vuelve a la vida + refresco (Especificar el sabor de su refresco en las notas del pedido)",
 extras:[],
 active:true
 },
@@ -242,15 +247,20 @@ active:true
 cat:"paquetes",
 name:"Levanta Muertos Tiburón",
 price:259,
-desc:"Caldo + quesadilla + ostiones + refresco",
-extras:[],
+desc:"Caldo + quesadilla + ostiones + refresco (Especificar el sabor de su refresco en las notas del pedido)",
+extras:[
+{name:"Quesadilla de Camarón",price:0},
+{name:"Quesadilla de Pulpo",price:0},
+{name:"Quesadilla de Pescado",price:0},
+{name:"Quesadilla de Jaiba",price:0}
+],
 active:true
 },
 {
 cat:"paquetes",
 name:"Y...La cruda?",
 price:289,
-desc:"1 Empanada de camaron + 1 sopa de mariscos + 1 refresco",
+desc:"1 Empanada de camaron + 1 sopa de mariscos + 1 refresco (Especificar el sabor de su refresco en las notas del pedido)",
 extras:[],
 active:true
 },
@@ -259,8 +269,12 @@ active:true
 cat:"paquetes",
 name:"Como en la playa",
 price:345,
-desc:"Piña Hawai + 1 vaso de caldo + 1 refresco",
-extras:[],
+desc:"Piña Hawai + 1 vaso de caldo + 1 refresco (Especificar el sabor de su refresco en las notas del pedido)",
+extras:[
+{name:"Caldo tradicional de Camarón",price:0},
+{name:"Caldo de Pescado",price:0},
+{name:"Caldo de Jaiba",price:0}
+],
 active:true
 },
 
@@ -1523,7 +1537,13 @@ name:"Pulpo Entero",
 price:470,
 desc:"",
 img:"https://i.postimg.cc/Fzxn4Mqj/eb6409c6_7527_42c8_bf81_1f26d32ec336.jpg",
-extras:[],
+extras:[
+{name:"A las Brazas",price:0},
+{name:"A la diabla",price:0},
+{name:"A la mantequilla",price:0},
+{name:"Al Ajillo",price:0},
+{name:"Al mojo de ajo",price:0}
+],
 active:true
 },
 
