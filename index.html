@@ -1291,7 +1291,7 @@ extras:[
 {name:"A la plancha",price:0},
 {name:"Al mojo de ajo",price:0},
 {name:"Al ajillo",price:0},
-{name:"A la mantequilla",price:0}
+{name:"A la mantequilla",price:0},
 {name:"Empanizado",price:0},
 {name:"Gratinado",price:0},
 ],
@@ -1321,7 +1321,7 @@ extras:[
 {name:"A la plancha",price:0},
 {name:"Al mojo de ajo",price:0},
 {name:"Al ajillo",price:0},
-{name:"A la mantequilla",price:0}
+{name:"A la mantequilla",price:0},
 {name:"Empanizado",price:0},
 {name:"Gratinado",price:0},
 ],
@@ -1538,7 +1538,7 @@ extras:[
 {name:"Al Chipotle",price:0},
 {name:"A la Diabla",price:0},
 {name:"A la Bilbaina",price:0},
-{name:"Veracruzana",price:0}
+{name:"Veracruzana",price:0},
 {name:"A los Tres Quesos",price:0}
 ],
 active:true
@@ -1585,7 +1585,7 @@ img:"",
 extras:[
 {name:"Frita",price:0},
 {name:"Mantequilla",price:0},
-{name:"Al Ajillo",price:0}
+{name:"Al Ajillo",price:0},
 {name:"Al Mojo de Ajo",price:0}
 ],
 active:true
@@ -1599,7 +1599,7 @@ img:"",
 extras:[
 {name:"Al chipotle",price:0},
 {name:"A la Diabla",price:0},
-{name:"A la Talla",price:0}
+{name:"A la Talla",price:0},
 {name:"A la Veracruzana",price:0}
 ],
 active:true
@@ -1663,8 +1663,8 @@ renderExtras();
 }
 // MENU
 function enterMenu(){
-home.style.display="none";
-menu.classList.remove("hidden");
+document.getElementById("home").style.display="none";
+document.getElementById("menu").classList.remove("hidden");
 renderProducts();
 }
 
