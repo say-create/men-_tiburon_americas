@@ -126,7 +126,7 @@ box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 <textarea id="nota"
 placeholder="Especificaciones para los productos (ej: sin cebolla, sin picante, etc.)"
 class="w-full border mt-2 p-2 rounded"></textarea>
-<input id="cambio" placeholder="¿Con cuánto pagarás?" class="w-full border mt-2">
+<input id="cambio" type="number" placeholder="¿Con cuánto pagarás?" class="w-full border mt-2">
 
 <select id="metodoPago" class="w-full border mt-2">
 <option>Efectivo</option>
@@ -1784,14 +1784,18 @@ let porcentaje = parseInt(document.getElementById("propina").value) || 0;
 let propina = Math.round(total * (porcentaje / 100));
 let totalFinal = total + propina;
 
-let pago = parseFloat(document.getElementById("cambio").value) || 0;
+let pagoInput = document.getElementById("cambio").value.trim();
+
+let pago = pagoInput === "" ? 0 : parseFloat(pagoInput);
+
+if(isNaN(pago)) pago = 0;
 let cambioFinal = pago - totalFinal;
 
 msg+=`Subtotal: $${total}%0A`;
 msg+=`Propina (${porcentaje}%): $${propina}%0A`;
 msg+=`Total: $${totalFinal}%0A`;
-msg+=`Pagará con: $${pago}%0A`;
-msg+=`Cambio: $${cambioFinal}%0A`;
+msg+=`Pagará con: $${pago.toFixed(2)}%0A`;
+msg+=`Cambio: $${cambioFinal.toFixed(2)}%0A`;
 msg+=`Método: ${metodoPago.value}%0A`;
 msg+=`Ubicación: ${ubicacion}%0A`;
 msg+=`Dirección: ${direccion.value}%0A`;
